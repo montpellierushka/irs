@@ -1,0 +1,140 @@
+.fp-watermark{
+    display: none !important;
+}
+
+.fslightbox-container{
+    max-height: 100vh;
+}
+.fslightbox-open .fp-viewing-main aside{
+    z-index: 0;
+}
+.iScrollVerticalScrollbar{
+    width: 0.1875em !important;
+}
+.iScrollIndicator{
+    background: #54ADDA !important;
+    border-radius: 1.25em !important;
+} 
+body:not(.fp-viewing-works) #worksImage{
+    opacity: 0 !important;
+}
+#worksImage{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    max-width: inherit;
+    max-height: inherit;
+    left: 0;
+    top: 0;
+    opacity: 0; 
+    pointer-events: none;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 0.7s opacity, 0.4s background;
+}
+#mapContainer{
+    background: #0C0C0D;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+    overflow: hidden;
+}
+#mapContainer.show{
+    z-index: 555;
+}
+.fp-viewing-contacts #mapContainer{
+    visibility: visible;
+    opacity: 1;
+}
+#map__overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s opacity;
+    background-color: #0c0c0de0;
+}
+.show #map__overlay{
+    opacity: 0;
+}
+#map{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(5% at center);
+    transition: clip-path .2s linear;
+}
+.show #map{
+    clip-path: circle(100% at 50% 50%) !important;
+}
+#map__image{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    max-width: inherit;
+    max-height: inherit;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    transform: translate3d(0,0,0);
+}
+#map__frame{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.show #map__frame{
+    pointer-events: all;
+}
+#map__back{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.125em;
+    height: 2em;
+    padding: 0 1em 0.1em;
+    border-radius: 0.6em;
+    background: #0C0C0D;
+    position: fixed;
+    left: 1em;
+    top: 1em;
+    z-index: 2;
+    transition: 0.5s opacity;
+    user-select: none;
+    cursor: pointer;
+    color: #76CCF8;
+}
+#map__back:hover{
+    opacity: 0.7;
+}
+.show #map__back{
+    display: flex;
+    pointer-events: all;
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}

@@ -1,0 +1,241 @@
+@import './../../../variables.module.scss';
+
+.section{
+	height: 100%; 
+	display: flex;
+	flex-direction: column;
+	position: relative;
+ 
+ 	&__content{
+ 		width: 100%;
+ 		padding: 0 0.625em;
+ 		margin: 0 auto;
+    	max-width: 68.8em;
+ 	}
+ 	&__description{
+ 		color: #C2C2C2;
+ 		line-height: 1.5;
+ 		max-width: 44em;
+ 		margin-bottom: 1.68em;
+ 	}
+}
+
+.services{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;	
+}
+.service{ 
+	background: #0C0C0D;
+	border-radius: 1.875em;
+	border: solid 0.0625em #fff;
+	padding: 1.875em 1.625em;
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 1.3em;
+	position: relative;
+	transition: 0.3s background;
+
+	&__name{
+		font-weight: 500;
+		font-size: 1.5em;
+		line-height: 1.12;
+		margin-bottom: 0.3em;
+	    width: 100%;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    position: relative;
+	    z-index: 1;
+	}
+	&__desc{
+		color: #C2C2C2;
+		line-height: 1.5;
+		margin-bottom: 1.48em;
+	    position: relative;
+	    z-index: 1;
+	}
+	&__up{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 1em;
+		cursor: pointer;
+		margin-bottom: 0.4em;
+	    position: relative;
+	    z-index: 1;
+	}
+	&__down{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 1em;
+		cursor: pointer;
+		margin-bottom: 0.7em;
+		margin-top: 0.65em;
+	    position: relative;
+	    z-index: 1;
+	}
+	&__down svg,
+	&__up svg{
+		width: auto;
+		height: 0.5em;
+		pointer-events: none;
+	}
+	&__props{
+		overflow: hidden;
+		height: 20em;
+	    position: relative;
+	    z-index: 1;
+	}
+	&__propWrapper{
+		height: 5em;
+		padding: 0.3125em 0;
+		transition: 0.5s transform;
+	}
+	&__prop{
+		height: 100%;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border: 0.0625em solid #686868; 
+		border-radius: 1.25em;
+		padding: 0 1.3em;
+	}
+	&__propPlus{
+		font-size: 1.125em;
+		font-weight: 500;
+		color: #76CCF8;
+		width: 1.555em;
+		height: 1.555em;
+		background: #414141;
+		border-radius: 0.2777em;
+		display: flex;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+	}
+	&__propPlus::before{
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 2.2777em;
+		height: 2.2777em;
+		border-radius: 0.555em;
+		border: 0.0555em solid #686868;
+	}
+	&__propText{
+		font-size: 0.875em;
+		font-weight: 500;
+		line-height: 1.3;
+		width: calc(100% - 3.5714em);
+	}
+	&__wrapper{
+		margin: 0 -1.625em -1.875em;
+		padding: 1.45em 1.5625em 1.225em;
+		background: transparent;
+	    position: relative;
+	    z-index: 1;
+		transition: 0.3s background;
+	}
+	&__price{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.4em;		
+	}
+	&__priceRight{
+		font-weight: 500;
+		font-size: 1.5em; 
+	}
+	&__priceLeft{
+		padding-top: 0.3em;
+	}
+	&__link{
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 4.375em; 
+		background: $IRSgradient; 
+		border: 0.1875em solid #7e90c5; 
+		border-radius: 1.25em; 
+	    position: relative;
+	    z-index: 1;
+	}
+	&__link::before {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0; 
+		border-radius: 1.25em; 
+	    background: $IRSgradientHOVER; 
+	    transition: opacity .5s;
+	    opacity: 0; 
+	} 
+	&__link span{
+		position: relative;
+		font-weight: 500;
+		z-index: 1;
+		color: #fff;
+	}
+	&__link:hover::before,&__link:active::before{
+		opacity: 1;
+	}
+	&__img{
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		max-width: inherit;
+		max-height: inherit;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0.2;
+		transition: 0.5s opacity; 
+	}  
+}
+
+
+@media(min-width: 670px){
+	.service{
+		width: calc(50% - 0.65em); 
+	}  
+	.service:not(:hover){
+		background: #282828;
+
+		.service__wrapper{
+			background: #161617;
+		}
+		.service__img{
+			opacity: 0;
+		}
+	}
+} 
+@media(min-width: $PCbreakpoint){
+	.section{
+
+		&__description{
+			margin-bottom: 2.2em;
+		}
+	}
+	.services{
+		justify-content: flex-start;
+		padding-bottom: 3em;
+	}
+	.service{
+		width: 32%;
+		margin-bottom: 1.6em;
+		margin-right: 2%;
+	}
+	.service:nth-child(3n+3){
+		margin-right: 0;
+	}
+}

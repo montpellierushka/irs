@@ -1,0 +1,45 @@
+@import './../../variables.module.scss';
+
+.button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: $fontColor;
+	background: $IRSgradient;
+	width: 100%;
+	font-weight: 500;
+	font-size: 1.875em;
+	margin-top: auto;
+	height: 4.366em;
+	border: none;
+	padding: 0;
+
+	&__svg{
+		display: none;
+	}
+}
+.button:hover{
+	color: $fontColor;
+}
+
+@media(min-width: $PCbreakpoint){
+	.button{
+		justify-content: space-between;
+		font-size: 3.125em;
+		height: 4em;
+		padding-left: calc(50% - 10.7em);
+		padding-right: calc(50% - 10.75em);
+		letter-spacing: -0.005em;
+
+		&__svg{
+			display: block;
+			width: auto;
+			height: 0.24em;
+			transition: 0.3s transform;
+		}
+	}
+	.button:hover .button__svg{
+		transform: translateX(-50%);
+	}
+}

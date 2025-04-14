@@ -11,7 +11,7 @@
 	<div class="col-md-12">
 		<div class="card card-primary">
 			<div class="card-header">
-				<h3 class="card-title"><a href="https://irs.bulochkin.site/{{$page->slug}}" target="_blank">https://irs.bulochkin.site/{{$page->slug}}</a></h3>
+				<h3 class="card-title"><a href="https://irs.irsapp.ru/{{$page->slug}}" target="_blank">https://irs.irsapp.ru/{{$page->slug}}</a></h3>
 			</div> 
 			<form method="POST" class="new-theme-form" action="{{ route('admin_pages_update') }}">
                 @csrf 

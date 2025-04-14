@@ -2,9 +2,11 @@
   "name": "IRS",
   "scripts": {
     "build": "rm -rf dist && webpack",
+    "buildd": "webpack",
     "server": "rm -rf dist && webpack && pm2 restart irs-server",
     "start": "node dist/server.js",
-    "dev": "rm -rf dist && webpack && node dist/server.js"
+    "dev": "rm -rf dist && webpack && node dist/server.js",
+    "devd": "webpack && node dist/server.js"
   },
   "babel": {
     "presets": [

@@ -1,0 +1,464 @@
+@import './../../variables.module.scss';
+
+
+/*breadcrumbs*/
+
+.breadcrumbs{
+	display: none;
+}
+@media(min-width: $PCbreakpoint){
+	.breadcrumbs{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: solid 0.0625em #fff;
+	    height: 7.6825em;
+	    padding-bottom: 0.4em;
+        margin-bottom: 2.57em;
+
+		&__wrapper{
+			font-size: 1.125em;
+			color: #c2c2c2;
+		}
+		&__link{
+			color: #fff;
+			font-weight: 400;
+		}
+		&__link:hover{
+			color: #c2c2c2;
+		}
+		&__contacts{
+			font-weight: 500;
+			font-size: 1.125em; 
+			color: #76CCF8;
+		}
+		&__contacts:hover{
+			color: #3A5795;
+		}
+	}
+	.breadcrumbsLight{
+		color: #909090;
+		border-bottom-color: #161616;
+		.breadcrumbs__link{
+			color: #161616;
+		}
+		.breadcrumbs__link:hover{
+			color: #909090;
+		}	
+		.breadcrumbs__contacts{
+			color: #5579B6;
+		}
+	}
+} 
+/*breadcrumbs*/
+
+.title{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.view{
+	display: none;
+	justify-content: space-between;
+	align-items: center;	
+    margin-top: 0.2em;
+	width: 3.25em;
+	cursor: pointer;
+}
+.view svg{
+	width: 1.1875em;
+	height: auto;
+}
+[class="view-rows"] .view svg rect{
+	fill: #76CCF8;
+}
+[class="view-rows"] .view svg+svg rect{
+	fill: #fff;
+}
+
+.projects{
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	&__element{
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	&__rowContent{
+		display: none;
+		flex-direction: column;
+		width: 47%;
+	}
+	&__rowTitle{
+		font-weight: 500;
+		font-size: 1.5em;
+		line-height: 1.166;
+		color: #FFFFFF;
+		margin-bottom: 0.65em;
+	}
+	&__rowDescription{
+		color: #C2C2C2;
+		line-height: 1.5;
+	}
+	&__rowDescription br{
+		display: none;
+	}
+	&__rowTags{
+		margin-top: auto;
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+	}
+	&__rowTag{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 2.286em; 
+		font-size: 0.875em;
+		line-height: 1.5;
+		color: #fff;
+		border: 0.0715em solid #FFFFFF; 
+		border-radius: 0.715em;
+	    padding: 0 0.9em 0.2em;
+    	margin: 0.7em 0.7em 0 0;
+	}
+	&__linkWraper{
+		border-radius: 1.875em;
+		overflow: hidden;
+	}
+	&__link{
+		position: relative;
+		display: block;
+		width: 100%;
+		padding-bottom: 72.9%;
+	}
+	&__linkContent{
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-end;
+	    padding: 2.7em 2.5em;
+	}
+	&__image{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	&__title{
+		text-transform: uppercase;
+		line-height: 1.166;
+		font-size: 1.125em;
+		margin-bottom: 0.7em;
+		color: #FFFFFF;
+	}
+	&__description{
+		font-size: 0.875em;
+		line-height: 1.3; 
+		color: #FFFFFF;
+		font-weight: 400;
+	}
+	&__back{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		z-index: -1;
+		left: 0;
+		top: 0;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0;
+		transition: 0.4s opacity;
+	}
+	&__element:hover+&__back{
+		opacity: 0.2;
+	}
+}
+@media(min-width: 500px){
+	.projects{
+
+		&__element{
+			width: 48.7%; 
+		}
+	}
+}
+@media(min-width: $PCbreakpoint){
+	.view{
+		display: flex;
+	}
+	.projects{
+		border-top: 0.0625em solid #fff;
+		margin-top: 3em;
+		padding-top: 3.7em;
+		&__element{ 
+			margin-bottom: 2.5em;
+		}
+	}
+	 
+	[class="view-rows"] .projects:not([data-projects="krep"]) .projects__element{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		border-bottom: solid 0.0625em #fff;
+		padding-bottom: 3.5em;
+		margin-bottom: 3.7em;
+	}
+	[class="view-rows"] .projects:not([data-projects="krep"]) .projects__rowContent{
+		display: flex;
+	}
+	[class="view-rows"] .projects:not([data-projects="krep"]) .projects__linkWraper{
+		width: 50.85%;
+	}
+	[class="view-rows"] .projects:not([data-projects="krep"]) .projects__title,
+	[class="view-rows"] .projects:not([data-projects="krep"]) .projects__description{
+		display: none;
+	}
+	 
+}
+
+/* krep */
+
+
+.krepFirst{
+	padding-top: 0.4em;
+	margin-bottom: 2em;
+	&__left{
+		font-size: 1.125em;
+		line-height: 1.5;
+	}
+	&__right{
+		width: 54.7%;
+	}
+	&__link{
+		color: #FF3B2D;
+		font-weight: 700;
+		line-height: 1.5;
+		font-size: 1.125em;
+	}
+}
+.krepSecond{
+	margin-bottom: 1.5em;
+	&__left{
+		font-weight: 700;
+		line-height: 1.1;
+		text-transform: uppercase;
+		font-size: 3em;
+	}
+	&__left span{
+		display: block;
+		color: #FF3B2D;
+	}
+	&__right{
+
+	}
+	&__comp{
+		font-size: 1.125em;
+		line-height: 1.5; 
+		color: #919191;
+		margin-bottom: 1.45em;
+	}
+	&__el{
+		font-size: 1.125em;
+		line-height: 1.2;  
+		margin-bottom: 0.8em;
+	}
+}
+.krepImg1{
+	width: 100%;
+	height: auto;
+	position: relative;
+	z-index: 1;
+}
+.krepImg2{
+	display: none;
+	width: 26.75em;
+	height: auto;
+	max-width: inherit;
+	max-height: inherit;
+	z-index: 0;
+	pointer-events: none;
+	position: absolute;
+	bottom: -18em;
+    right: -11.6em;
+}
+.krepImg3{
+	width: 100%;
+	height: auto; 
+	margin-bottom: 3em;
+}
+.krepImg4{
+	width: 100%;
+	height: auto; 
+	margin-bottom: 2em;
+}
+.krepImg6{
+	width: 100%;
+	height: auto;  
+}
+.krepThird{
+    width: 100%;
+    padding: 2em 0.625em;
+    margin: 0 auto;
+    max-width: 50.4em;
+    &__title{
+    	color: #919191;
+    	font-size: 1.125em;
+    	line-height: 1.5;
+    	margin-bottom: 1em;
+    }
+    &__text{
+    	font-size: 1.5em;
+    	line-height: 1.5; 
+    	color: #161616;
+    }
+}
+.krepFour{
+	margin: 0 auto;
+	max-width: 50em;
+	padding-top: 3em;
+	border-top: solid 0.0625em #161616;
+	margin-bottom: 2em;
+	&__title{
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 1.125em;
+		line-height: 1.5em;
+		margin-bottom: 1.05em;
+	}
+	&__text{		
+		font-size: 1.125em;
+		max-width: 28em;
+		line-height: 1.5em;
+	}
+}
+.krepText{
+	font-size: 1.125em;
+	margin: 0 auto;
+	max-width: 44.44em;
+	line-height: 1.5;
+	margin-bottom: 2em;
+}
+.krepFive{
+	margin: 2em auto 0;
+	max-width: 49.2em;
+	&__title{
+		color: #919191;
+		line-height: 1.5;
+		font-size: 1.125em;
+		margin-bottom: 1.1em;
+	}
+	&__text{
+		font-size: 1.5em;
+    	line-height: 1.5;  
+	}
+}
+.otherProjectsTitle{
+	font-size: 2em;
+	font-weight: 500;
+	line-height: 1.166;
+	padding-top: 2.2em;
+}
+.krepImg7{
+	display: none;
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	z-index: -1;
+	pointer-events: none;
+	width: 54.875em;
+	height: auto;
+}
+.otherProjectsTitle+.projects{
+	padding-top: 2em;
+}
+@media(min-width: $PCbreakpoint){
+	.krepFirst{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 3.3em;
+		&__left{
+			width: 15%;
+		} 
+	}
+	.krepSecond{
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 4em;
+		&__left{			
+			font-size: 6.25em;
+			letter-spacing: -0.05em;
+		}	
+		&__right{
+			width: 22.6%;
+    		margin-top: -0.8em;
+		}
+	}
+	.krepImg1{
+		margin-bottom: -21em;
+	}
+	.krepImg2{
+		display: block;
+	}
+	.krepThird{
+		padding-top: 22.5em;
+		padding-bottom: 4.2em;
+		&__text{
+			font-size: 1.875em;
+		}
+	}
+	.krepImg3{
+		margin-bottom: 7.1em;
+	}
+	.krepFour{
+		padding-top: 3.8em;
+		margin-bottom: 3.85em;
+	}
+	.krepImg4{
+		margin-bottom: 3.55em;
+	}
+	.krepText{
+		margin-bottom: 3.1em;
+	}
+	.krepImg6{
+		margin-top: -7.2em;
+	}
+	.krepFive{
+		margin-top: 6.3em;
+		margin-bottom: 3.9em;
+		&__text{
+			font-size: 1.875em;
+		}
+	}
+	.otherProjectsTitle{
+		font-size: 3.125em;
+	}
+	.otherProjectsTitle+.projects{
+		margin-top: 0;
+		border-top: none;
+	    padding-top: 3.5em; 
+	}
+	.otherProjectsTitle+.projects .projects__element{
+		margin-bottom: 1.5em;
+	}
+	.krepImg7{
+		display: block;
+	}
+}
+
+
+/* krep */

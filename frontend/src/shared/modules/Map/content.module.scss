@@ -1,0 +1,140 @@
+@import './../../variables.module.scss';
+
+
+.contacts{ 
+	padding-top: 0.3em;
+
+	&__left{
+		padding-bottom: 0.7em;
+	}
+	&__right{
+		padding-bottom: 0.7em;
+	}
+	&__subtitle{
+		font-size: 1.125em;
+		line-height: 1.5; 
+		color: #C2C2C2;
+		margin-bottom: 1.25em;
+	}
+	&__address{
+		font-weight: 500;
+		font-size: 1.125em;
+		line-height: 1.5; 
+	}
+	&__time{
+		font-size: 1.125em;
+		line-height: 1.5; 
+		color: #C2C2C2;
+		margin-bottom: 1em;
+	}
+	&__time br{
+		display: none;
+	}
+	&__phone{
+		display: block;
+		white-space: nowrap;
+		font-weight: 500;
+		font-size: 1.875em;
+		margin-bottom: 0.1em;
+	}
+	&__phone:hover{
+		color: #76CCF8;	
+	}
+	&__description{
+		line-height: 1.5;
+		color: #C2C2C2;
+		margin-bottom: 1.1em;
+	}
+	&__show{
+		font-size: 1.125em;
+		font-weight: 500;
+		cursor: pointer;
+		user-select: none;
+		color: #76CCF8;
+	}
+	&__hr{
+		height: 0.0625em;
+		background: #fff;
+		margin-top: 2.4em;
+	}
+}
+
+
+
+ 
+@media(min-width: $PCbreakpoint){
+	.contacts{
+		padding-top: 4.3em;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		&__wrapper{
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+		&__left{
+			width: 55.1%;
+		}
+		&__right{
+		    width: 31.7%;
+    		margin-top: -0.5em;
+		}
+		&__right &__time{
+			padding-top: 3.2em;
+		}
+		&__subtitle{
+			padding-bottom: 1.4em;
+			margin-bottom: 1.55em;
+			border-bottom: solid 0.0625em #fff;
+		}
+		&__time br{
+			display: block;
+		}
+		&__address{
+			margin-bottom: 1.2em;
+		}
+		&__phone{
+			margin-bottom: 0.6em;
+		}
+		&__description{
+			width: 100%; 
+			margin-top: auto;
+			margin-bottom: 0;
+			max-width: 51em;
+		}
+		&__hr{
+			display: none;
+		}
+		&__show{
+			position: absolute;
+			left: 50%;
+			top: 50%;			
+			transform: translate(-50%, -50%);
+			background: #0C0C0D;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 11.8125em;
+			height: 11.8125em;
+			border-radius: 100%;
+		}
+	}
+
+	[class='fp-viewing-contacts'] aside div[data-div="social"]{
+		opacity: 0;
+		pointer-events: none;
+	}
+	.contacts div[data-div="social"]{
+		display: flex;
+		justify-content: flex-start; 
+	    margin: 2em 0;
+	}
+	.contacts div[data-div="social"]>a{
+		margin: 0 2.3em 0 0;
+	}
+	.contacts div[data-div="social"] svg{
+		width: 2.4em;
+	}
+}

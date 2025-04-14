@@ -1,0 +1,12 @@
+@import './../../../variables.module.scss';
+
+ 
+
+.rules{
+	padding-top: 2em;
+}
+@media(min-width: $PCbreakpoint){
+	.rules{
+		padding-top: 3.6em;
+	}
+}

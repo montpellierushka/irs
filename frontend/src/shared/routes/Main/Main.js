@@ -130,7 +130,7 @@ export default function Main ({ fetchInitialData, serverData }) {
 
     if((Object.keys(stateData.main).length === 0) && __isBrowser__){
         if(window.__INITIAL_PATH__ === pathname){ 
-            stateData.contextSEO.[pathname] = window.__INITIAL_DATA__.backendSEO; 
+            stateData.contextSEO[pathname] = window.__INITIAL_DATA__.backendSEO; 
             dispatchData({
               type: "FETCH_MAIN",
               payload: window.__INITIAL_DATA__
@@ -156,7 +156,7 @@ export default function Main ({ fetchInitialData, serverData }) {
           fetchInitialData()
             .then((content) => {
               setContent(content);
-              stateData.contextSEO.[pathname] = content.backendSEO;
+              stateData.contextSEO[pathname] = content.backendSEO;
               setLoading(false);
               dispatchData({
                   type: "FETCH_MAIN",

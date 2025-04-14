@@ -24,8 +24,8 @@ export default function App ({ serverData=null }) {
     
 
     if(!__isBrowser__){
-        if(!stateData.contextSEO.[location.pathname]){
-          stateData.contextSEO.[location.pathname] = serverData.backendSEO; 
+        if(!stateData.contextSEO[location.pathname]){
+          stateData.contextSEO[location.pathname] = serverData.backendSEO; 
         }
     }
 

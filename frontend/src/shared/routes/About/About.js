@@ -25,7 +25,7 @@ export default function About ({ fetchInitialData, serverData }) {
   
     if(!stateData.contextAbout && __isBrowser__){
         if(window.__INITIAL_PATH__ === pathname){  
-            stateData.contextSEO.[pathname] = window.__INITIAL_DATA__.backendSEO;  
+            stateData.contextSEO[pathname] = window.__INITIAL_DATA__.backendSEO;  
             stateData.contextAbout = window.__INITIAL_DATA__.backendContent;
             dispatchData({
                 type: "FETCH_ABOUT",
@@ -53,7 +53,7 @@ export default function About ({ fetchInitialData, serverData }) {
               setContent(response.backendContent)
               setLoading(false)  
               stateData.contextAbout = response.backendContent;
-              stateData.contextSEO.[pathname] = response.backendSEO;  
+              stateData.contextSEO[pathname] = response.backendSEO;  
               dispatchData({
                 type: "FETCH_ABOUT",
                 payload: stateData.contextAbout

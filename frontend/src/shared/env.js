@@ -1,6 +1,6 @@
 const Env = {
-    backend: 'https://back.bulochkin.site/',   
-    backendMini: 'https://back.bulochkin.site',   
+    backend: 'http://irs.irsapp.ru/backend/',   
+    backendMini: 'http://irs.irsapp.ru/backend',   
 }
 
 export default Env

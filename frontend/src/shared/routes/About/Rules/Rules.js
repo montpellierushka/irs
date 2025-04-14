@@ -27,7 +27,7 @@ export default function Rules ({ fetchInitialData,serverData }) {
     if((stateData.pagesContext[pathname] === undefined) && __isBrowser__){
         if(window.__INITIAL_PATH__ === pathname){  
             stateData.pagesContext[pathname] = window.__INITIAL_DATA__.pageBackendContent; 
-            stateData.contextSEO.[pathname] = window.__INITIAL_DATA__.backendSEO;
+            stateData.contextSEO[pathname] = window.__INITIAL_DATA__.backendSEO;
             dispatchData({
                 type: "FETCH_PAGES",
                 payload: stateData.pagesContext
@@ -55,7 +55,7 @@ export default function Rules ({ fetchInitialData,serverData }) {
               setContent(response.pageBackendContent)
               setLoading(false)  
               stateData.pagesContext[pathname] = response.pageBackendContent;
-              stateData.contextSEO.[pathname] = response.backendSEO;
+              stateData.contextSEO[pathname] = response.backendSEO;
               dispatchData({
                 type: "FETCH_PAGES",
                 payload: stateData.pagesContext

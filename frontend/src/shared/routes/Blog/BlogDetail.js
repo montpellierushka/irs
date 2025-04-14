@@ -26,7 +26,7 @@ export default function BlogDetail ({ fetchInitialData, serverData }) {
     if ( !(stateData.blogDetailsContext[pathname]) && __isBrowser__ ) {
         if(window.__INITIAL_PATH__ === pathname){  
             stateData.blogDetailsContext[pathname] = window.__INITIAL_DATA__.blogDetailBackendContent; 
-            stateData.contextSEO.[pathname] = window.__INITIAL_DATA__.backendSEO;
+            stateData.contextSEO[pathname] = window.__INITIAL_DATA__.backendSEO;
             dispatchData({
               type: "FETCH_BLOG_DETAIL",
               payload: stateData.blogDetailsContext
@@ -53,7 +53,7 @@ export default function BlogDetail ({ fetchInitialData, serverData }) {
               setContent(response.blogDetailBackendContent)
               setLoading(false) 
               stateData.blogDetailsContext[pathname] = response.blogDetailBackendContent;
-              stateData.contextSEO.[pathname] = response.backendSEO;
+              stateData.contextSEO[pathname] = response.backendSEO;
               dispatchData({
                   type: "FETCH_BLOG_DETAIL",
                   payload: stateData.blogDetailsContext

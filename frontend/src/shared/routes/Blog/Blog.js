@@ -56,7 +56,7 @@ export default function Blog ({ fetchInitialData, serverData }) {
         if(window.__INITIAL_PATH__ === pathname){
             stateData.blogCountsContext[currentBlogCategory] = window.__INITIAL_DATA__.blogBackendCount;  
             stateData.blogContext[currentBlogCategory][page] = window.__INITIAL_DATA__.blogBackendContent;
-            stateData.contextSEO.[pathname] = window.__INITIAL_DATA__.backendSEO;
+            stateData.contextSEO[pathname] = window.__INITIAL_DATA__.backendSEO;
             dispatchData({
               type: "FETCH_BLOG",
               payload: stateData.blogContext
@@ -84,7 +84,7 @@ export default function Blog ({ fetchInitialData, serverData }) {
               setLoading(false) 
               stateData.blogCountsContext[currentBlogCategory] = response.blogBackendCount;
               stateData.blogContext[currentBlogCategory][page] = response.blogBackendContent;
-              stateData.contextSEO.[pathname] = response.backendSEO;
+              stateData.contextSEO[pathname] = response.backendSEO;
               dispatchData({
                   type: "FETCH_BLOG",
                   payload: stateData.blogContext

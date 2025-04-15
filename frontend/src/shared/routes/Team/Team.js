@@ -26,7 +26,7 @@ export default function Team ({ fetchInitialData, serverData }) {
   
     if(!stateData.contextTeam && __isBrowser__){
         if(window.__INITIAL_PATH__ === pathname){  
-            stateData.contextSEO.[pathname] = window.__INITIAL_DATA__.backendSEO;  
+            stateData.contextSEO[pathname] = window.__INITIAL_DATA__.backendSEO;  
             stateData.contextTeam = window.__INITIAL_DATA__.backendTeam;
             dispatchData({
                 type: "FETCH_TEAM",
@@ -54,7 +54,7 @@ export default function Team ({ fetchInitialData, serverData }) {
               setContent(response.backendTeam)
               setLoading(false)  
               stateData.contextTeam = response.backendTeam;
-              stateData.contextSEO.[pathname] = response.backendSEO;  
+              stateData.contextSEO[pathname] = response.backendSEO;  
               dispatchData({
                 type: "FETCH_TEAM",
                 payload: stateData.contextTeam

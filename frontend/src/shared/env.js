@@ -1,6 +1,6 @@
 const Env = {
-    backend: 'http://irs.irsapp.ru/irs/backend/',   
-    backendMini: 'http://irs.irsapp.ru/irs/backend',   
+    backend: 'http://irs2.irsapp.ru/',   
+    backendMini: 'http://irs2.irsapp.ru',   
 }
 
 export default Env

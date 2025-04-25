@@ -19,7 +19,6 @@ export default function App ({ serverData=null }) {
     const location = useLocation();
     React.useEffect(() => { 
         window.scrollTo(0, 0)
-        console.log(location.pathname); 
     }, [location]);
     
 

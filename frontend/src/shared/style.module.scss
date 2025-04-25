@@ -13,6 +13,9 @@ body{
     padding: 0;
     min-height:  -webkit-fill-available; 
 }
+body:not(.fp-responsive) .fp-overflow {
+    height: 100%;
+}
 @media(min-width: $PCbreakpoint){
     body{
         font-size: 0.833333vw;

@@ -176,6 +176,29 @@
 							</li>
 						</ul>
 					</li> 
+					<li class="nav-item <?if(Request()->route()->getPrefix()=='admin/services'){ echo 'menu-is-opening menu-open'; }?>">
+						<a href="javascript:;" class="nav-link <?if(Request()->route()->getPrefix()=='admin/services'){ echo 'active'; }?>">
+							<i class="nav-icon fas fa-file"></i>
+							<p>
+								Услуги
+								<i class="fas fa-angle-left right"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="{{route('admin_services')}}" class="nav-link <?if(Route::current()->getName()=='admin_services'){ echo 'active'; }?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Все</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route('admin_services_new')}}" class="nav-link <?if(Route::current()->getName()=='admin_services_new'){ echo 'active'; }?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Добавить</p>
+								</a>
+							</li>
+						</ul>
+					</li> 
 					<li class="nav-item <?if(Request()->route()->getPrefix()=='admin/team'){ echo 'menu-is-opening menu-open'; }?>">
 						<a href="javascript:;" class="nav-link <?if(Request()->route()->getPrefix()=='admin/team'){ echo 'active'; }?>">
 							<i class="nav-icon fas fa-user"></i>

@@ -12,6 +12,7 @@ use App\Models\Page;
 use App\Models\Team;
 use App\Models\Category;
 use App\Models\Vacancy;
+use App\Models\Service;
 
 class AdminController extends Controller
 {
@@ -32,7 +33,7 @@ class AdminController extends Controller
         $vacancy = Vacancy::where('id',$data['id'])->first(); 
         $vacancy->delete();  
 
-        return redirect(route('admin_vacancies'))->with('mess', 'Вакансия удалёна!');
+        return redirect(route('admin_vacancies'))->with('mess', 'Вакансия удалена!');
     }
 
 
@@ -99,8 +100,91 @@ class AdminController extends Controller
 
         return redirect('/admin/vacancies/'.$data['id'])->with('mess', 'Вакансия обновлена!');
     }
- 
 
+
+    // services
+    public function allServices(){  
+        $services = Service::all();
+        return view('admin.services.index', compact('services'));
+    }
+
+    public function servicesDelete(Request $request){  
+
+        $data = $request->validate([
+            'id' => ['required', 'exists:services,id'], 
+        ]);
+
+        $service = Service::where('id',$data['id'])->first(); 
+        $service->delete();  
+
+        return redirect(route('admin_services'))->with('mess', 'Услуга удалена!');
+    }
+
+
+    public function servicesNew(){    
+        return view('admin.servicenew',[    
+        ]);
+    }
+    public function servicesNewAdd(Request $request){   
+        $data = $request->validate([ 
+            'title' => ['required'], 
+            'slug' => ['required'], 
+            'seo_title' => ['max:255'], 
+            'seo_description' => ['max:255'], 
+            'excerpt' => ['required'],  
+            'content' => ['required'],  
+        ]);
+        $page = new Service(); 
+        $page->title = $data['title'];
+        $page->slug = $data['slug'];
+        if($data['seo_title']) $page->seo_title = $data['seo_title'];
+        if($data['seo_description']) $page->seo_description = $data['seo_description'];
+        $page->excerpt = $data['excerpt']; 
+        $page->content = $data['content'];
+        $page->save();
+
+        return redirect(route('admin_services'))->with('mess', 'Услуга добавлена!');
+    }
+
+    public function servicesService($number){  
+        $service = Service::where('id',$number)->first();
+        if($service){ 
+            return view('admin.service',[ 
+                'service' => $service,   
+            ]);
+        }
+        abort(404);
+    }
+    public function servicesUpdate(Request $request){   
+        $data = $request->validate([
+            'id' => ['required', 'exists:services,id'],  
+            'title' => ['required'], 
+            'slug' => ['required'],   
+            'excerpt' => ['required'],  
+            'content' => ['required'],  
+            'seo_title' => ['max:255'], 
+            'seo_description' => ['max:255'], 
+        ]);
+        $page = Service::where('id',$data['id'])->first(); 
+        $page->title = $data['title'];
+        $page->slug = $data['slug'];
+        if($data['seo_title']) {
+            $page->seo_title = $data['seo_title']; 
+        } else {
+            $page->seo_title = null;
+        }
+        if($data['seo_description']) {
+            $page->seo_description = $data['seo_description']; 
+        } else {
+            $page->seo_description = null;
+        }
+        $page->excerpt = $data['excerpt']; 
+        $page->content = $data['content'];
+        $page->save();
+
+        return redirect('/admin/services/'.$data['id'])->with('mess', 'Вакансия обновлена!');
+    }
+    // services
 
 
     public function team(){  
@@ -493,7 +577,7 @@ class AdminController extends Controller
         $top->value1 = $data['TOP'];
         $top->save();
 
-        $title = Front_option::where('key','SLIDE1_TITLE')->first();
+        $title = Front_option::where('key',' ')->first();
         $title->value1 = $data['TITLE'];
         $title->save();
 

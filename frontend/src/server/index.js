@@ -24,8 +24,6 @@ app.get('*', (req, res, next) => {
     req.url = '/';
   } 
 
-  console.log(req.url)
-
   const activeRoute = routes.find((route) => matchPath(route.path, req.url)) || {}
 
   let fetchPath = req.path;
@@ -83,6 +81,8 @@ app.get('*', (req, res, next) => {
     <link rel="preload" href="/fonts/TTNorms-Regular.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="/fonts/TTNorms-Medium.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="/fonts/TTNorms-Bold.woff2" as="font" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style> 
         @font-face {
             font-family: 'TTNorms';
@@ -114,6 +114,7 @@ app.get('*', (req, res, next) => {
     ${helmet.meta.toString()}
     ${helmet.link.toString()}
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/bundle.js" defer></script>
     <link href="/main.css" rel="stylesheet">
     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
@@ -131,5 +132,5 @@ app.get('*', (req, res, next) => {
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, 'localhost', () => {
-  console.log(`Сервер запущен, ты опущен on port: ${PORT}`)
+  console.log(`Сервер запущен on port: ${PORT}`)
 })

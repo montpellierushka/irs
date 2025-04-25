@@ -89,6 +89,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
         Route::post('/new', [App\Http\Controllers\AdminController::class, 'vacanciesNewAdd']); 
     });
 
+    Route::group(['prefix' => 'services'], function(){
+        Route::get('/',  [App\Http\Controllers\AdminController::class, 'services'])->name('admin_services');
+        Route::get('/{number}', [App\Http\Controllers\AdminController::class, 'servicesService'])->where('number', '[0-9]+');
+        Route::post('/delete', [App\Http\Controllers\AdminController::class, 'servicesDelete'])->name('admin_services_delete'); 
+        Route::post('/update', [App\Http\Controllers\AdminController::class, 'servicesUpdate'])->name('admin_services_update'); 
+        Route::get('/new', [App\Http\Controllers\AdminController::class, 'servicesNew'])->name('admin_services_new'); 
+        Route::post('/new', [App\Http\Controllers\AdminController::class, 'servicesNewAdd']); 
+    });
+
     Route::get('/orders',  [App\Http\Controllers\AdminController::class, 'orders'])->name('orders');
     Route::post('/orders/delete',  [App\Http\Controllers\AdminController::class, 'ordersDelete'])->name('orders_delete');
 

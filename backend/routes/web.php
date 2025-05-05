@@ -13,6 +13,9 @@ Route::get('/blog/{slug}', [App\Http\Controllers\Controller::class, 'blogDetail'
 Route::get('/vacancies', [App\Http\Controllers\Controller::class, 'vacancies']); 
 Route::get('/vacancies/{slug}', [App\Http\Controllers\Controller::class, 'vacanciesDetail']);
 
+Route::get('/services', [App\Http\Controllers\Controller::class, 'services']); 
+Route::get('/services/{slug}', [App\Http\Controllers\Controller::class, 'servicesDetail']);
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
@@ -88,14 +91,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
         Route::get('/new', [App\Http\Controllers\AdminController::class, 'vacanciesNew'])->name('admin_vacancies_new'); 
         Route::post('/new', [App\Http\Controllers\AdminController::class, 'vacanciesNewAdd']); 
     });
-
+ 
     Route::group(['prefix' => 'services'], function(){
-        Route::get('/',  [App\Http\Controllers\AdminController::class, 'services'])->name('admin_services');
+        Route::get('/',  [App\Http\Controllers\AdminController::class, 'allServices'])->name('admin_services');
         Route::get('/{number}', [App\Http\Controllers\AdminController::class, 'servicesService'])->where('number', '[0-9]+');
         Route::post('/delete', [App\Http\Controllers\AdminController::class, 'servicesDelete'])->name('admin_services_delete'); 
         Route::post('/update', [App\Http\Controllers\AdminController::class, 'servicesUpdate'])->name('admin_services_update'); 
-        Route::get('/new', [App\Http\Controllers\AdminController::class, 'servicesNew'])->name('admin_services_new'); 
-        Route::post('/new', [App\Http\Controllers\AdminController::class, 'servicesNewAdd']); 
+        Route::get('/new', [App\Http\Controllers\AdminController::class, 'createService'])->name('admin_services_new'); 
+        Route::post('/new', [App\Http\Controllers\AdminController::class, 'createServiceAdd'])->name('admin_services_new_add'); 
     });
 
     Route::get('/orders',  [App\Http\Controllers\AdminController::class, 'orders'])->name('orders');

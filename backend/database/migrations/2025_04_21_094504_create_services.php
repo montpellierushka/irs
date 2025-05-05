@@ -18,6 +18,7 @@ class CreateServices extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
+            $table->text('text')->nullable();
             $table->json('content')->nullable();
             $table->timestamps();
         });

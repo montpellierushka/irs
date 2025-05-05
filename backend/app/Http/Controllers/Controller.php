@@ -10,6 +10,7 @@ use App\Models\Menu;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Vacancy;
+use App\Models\Service;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -165,6 +166,40 @@ class Controller extends BaseController
         $seoDescription = "Разработаем сайт любой сложности. От 70 000 руб. ★ Индивидуальный подход к бизнесу ★ Уникальный дизайн ★ Увеличим прибыль вашего бизнеса ★ Обращайтесь по тел. +7 (383) 375-25-99"; 
         if($vacancy->seo_title) $seoTitle = $vacancy->seo_title;
         if($vacancy->seo_description) $seoDescription = $vacancy->seo_description;
+        $json['backendSEO'] = array(
+            'title' => $seoTitle,
+            'description' => $seoDescription
+        );
+        echo json_encode($json);
+    }
+
+    public function services(){ 
+        $json = $this->getStartParams();
+        $pageContent = Service::get();
+        $json['pageBackendContent'] = $pageContent; 
+        $json['backendSEO'] = array(
+            'title' => "Услуги1 | Студия разработки ИРС",
+            'description' => "Разработаем сайт любой сложности. От 70 000 руб. ★ Индивидуальный подход к бизнесу ★ Уникальный дизайн ★ Увеличим прибыль вашего бизнеса ★ Обращайтесь по тел. +7 (383) 375-25-99"
+        );
+        echo json_encode($json);
+    }
+
+    public function servicesDetail($slug){
+        $json = $this->getStartParams();
+        
+        $service = Service::where('slug',$slug)->first(); 
+        if(!$service){
+            return view('welcome',[
+                'json' => $json,
+                'status' => '404'
+            ]);
+        } 
+
+        $json['pageBackendContent'] = $service; 
+        $seoTitle = $vacancy->title." | Студия разработки ИРС";
+        $seoDescription = "Разработаем сайт любой сложности. От 70 000 руб. ★ Индивидуальный подход к бизнесу ★ Уникальный дизайн ★ Увеличим прибыль вашего бизнеса ★ Обращайтесь по тел. +7 (383) 375-25-99"; 
+        if($service->seo_title) $seoTitle = $service->seo_title;
+        if($service->seo_description) $seoDescription = $service->seo_description;
         $json['backendSEO'] = array(
             'title' => $seoTitle,
             'description' => $seoDescription

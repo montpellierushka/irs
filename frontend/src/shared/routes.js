@@ -12,6 +12,7 @@ import Rules from './routes/About/Rules/Rules';
 import Socseti from './routes/About/Social/Social';
 import Team from './routes/Team/Team';
 import Vacancies from './routes/Vacancies/Vacancies';
+import ServicesDetail from './routes/Services/ServiceDetail';
 
 const routes =  [ 
   {
@@ -22,12 +23,12 @@ const routes =  [
   {
     path: '/services',
     component: Services,
-    fetchInitialData: (menu = false, path = false) => fetchPage(menu,path)
+    fetchInitialData: (menu = false, path = false) => fetchPageContent(menu,path)
   },
   {
     path: '/services/:detail',
-    component: Services,
-    fetchInitialData: (menu = false, path = false) => fetchPage(menu,path)
+    component: ServicesDetail,
+    fetchInitialData: (menu = false, path = false) => fetchPageContent(menu,path)
   },
   {
     path: '/portfolio',

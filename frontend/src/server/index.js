@@ -108,6 +108,9 @@ app.get('*', (req, res, next) => {
             font-style: normal;
             font-display: swap;
         } 
+        body:not(.fp-responsive) .fp-overflow {
+            height: 100% !important;
+        }
     </style>
 
     ${helmet.title.toString()}

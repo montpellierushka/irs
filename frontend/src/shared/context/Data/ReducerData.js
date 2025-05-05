@@ -30,8 +30,13 @@ const ReducerData = (state, action) => {
                 ...state,
                 blogDetailsContext: action.payload
             }
+        case "FETCH_SERVICES": 
+            return{
+                ...state,
+                servicesContext: action.payload
+            }
 
-
+ 
 
         default:
             return state

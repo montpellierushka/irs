@@ -105,7 +105,9 @@ class AdminController extends Controller
     // services
     public function allServices(){  
         $services = Service::all();
-        return view('admin.services.index', compact('services'));
+        return view('admin.services',[ 
+            'services' => $services,  
+        ]);
     }
 
     public function servicesDelete(Request $request){  
@@ -120,29 +122,20 @@ class AdminController extends Controller
         return redirect(route('admin_services'))->with('mess', 'Услуга удалена!');
     }
 
-
-    public function servicesNew(){    
+ 
+    public function createService(){    
         return view('admin.servicenew',[    
         ]);
     }
-    public function servicesNewAdd(Request $request){   
-        $data = $request->validate([ 
-            'title' => ['required'], 
-            'slug' => ['required'], 
-            'seo_title' => ['max:255'], 
-            'seo_description' => ['max:255'], 
-            'excerpt' => ['required'],  
-            'content' => ['required'],  
+    public function createServiceAdd(Request $request){   
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => ['required'],
+            'description' => 'nullable|string',
+            'text' => 'nullable|string',
+            'content' => 'nullable|array',
         ]);
-        $page = new Service(); 
-        $page->title = $data['title'];
-        $page->slug = $data['slug'];
-        if($data['seo_title']) $page->seo_title = $data['seo_title'];
-        if($data['seo_description']) $page->seo_description = $data['seo_description'];
-        $page->excerpt = $data['excerpt']; 
-        $page->content = $data['content'];
-        $page->save();
-
+        Service::create($data);
         return redirect(route('admin_services'))->with('mess', 'Услуга добавлена!');
     }
 
@@ -157,32 +150,22 @@ class AdminController extends Controller
     }
     public function servicesUpdate(Request $request){   
         $data = $request->validate([
-            'id' => ['required', 'exists:services,id'],  
-            'title' => ['required'], 
-            'slug' => ['required'],   
-            'excerpt' => ['required'],  
-            'content' => ['required'],  
-            'seo_title' => ['max:255'], 
-            'seo_description' => ['max:255'], 
+            'id' => 'required|exists:services,id',
+            'title' => 'required|string|max:255',
+            'slug' => ['required'],
+            'description' => 'nullable|string',
+            'text' => 'nullable|string',
+            'content' => 'nullable|array',
         ]);
-        $page = Service::where('id',$data['id'])->first(); 
-        $page->title = $data['title'];
-        $page->slug = $data['slug'];
-        if($data['seo_title']) {
-            $page->seo_title = $data['seo_title']; 
-        } else {
-            $page->seo_title = null;
-        }
-        if($data['seo_description']) {
-            $page->seo_description = $data['seo_description']; 
-        } else {
-            $page->seo_description = null;
-        }
-        $page->excerpt = $data['excerpt']; 
-        $page->content = $data['content'];
-        $page->save();
+        $service = Service::findOrFail($data['id']);
+        $service->title = $data['title'];
+        $service->slug = $data['slug'];
+        $service->description = $data['description'] ?? null;
+        $service->text = $data['text'] ?? null;
+        $service->content = $data['content'] ?? [];
+        $service->save();
 
-        return redirect('/admin/services/'.$data['id'])->with('mess', 'Вакансия обновлена!');
+        return redirect('/admin/services/'.$service->id)->with('mess', 'Услуга обновлена!');
     }
     // services
 
@@ -577,7 +560,7 @@ class AdminController extends Controller
         $top->value1 = $data['TOP'];
         $top->save();
 
-        $title = Front_option::where('key',' ')->first();
+        $title = Front_option::where('key','SLIDE1_TITLE')->first();
         $title->value1 = $data['TITLE'];
         $title->save();
 

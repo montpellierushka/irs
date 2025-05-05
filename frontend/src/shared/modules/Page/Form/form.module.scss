@@ -26,6 +26,18 @@ html:not([class="fp-enabled"]) aside .sideForm{
     justify-content: flex-end;
     transition: 0.5s;
 }
+.visibleForm {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hiddenForm {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 [class="page-right"] .sideForm{
     position: sticky;
     right: inherit;

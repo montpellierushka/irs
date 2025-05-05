@@ -1,6 +1,8 @@
 const StateData = {
     main: {},
     pagesContext: {},
+    servicesContext: {},
+    servicesDetailContext: {},
     blogContext: {
         'all': {},
         'articles': {},
@@ -33,5 +35,5 @@ const StateData = {
         },
     },
 }
-
+ 
 export default StateData

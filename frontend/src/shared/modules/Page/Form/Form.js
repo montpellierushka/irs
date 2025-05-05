@@ -1,6 +1,7 @@
-import React from 'react'  
+import React, { useState, useEffect } from 'react'  
 import classes from './form.module.scss' 
 import Env from '../../../env'
+import { useLocation } from 'react-router-dom'; 
 
 import axios from 'axios';   
 
@@ -28,9 +29,35 @@ function handleSubmit(e) {
     e.preventDefault();
 }
 
-const Form = () => { 
+const Form = ({toggleVisible}) => { 
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (toggleVisible) {
+                const triggerElement = document.getElementById(toggleVisible);
+                if (triggerElement) {
+                    const rect = triggerElement.getBoundingClientRect();     
+                    const hasPassedTrigger = rect.top <= 200;
+                    
+                    setIsVisible(hasPassedTrigger);
+                }
+            } else {
+                setIsVisible(true);
+            }
+        };
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [toggleVisible]);
+    
+    const formVisibilityClass = isVisible ? classes.visibleForm : classes.hiddenForm;
+    
     return (  
-        <div className={classes.sideForm}>
+        <div className={`${classes.sideForm} ${formVisibilityClass}`}>
             <img src="/img/form.png" className={classes.form__image} alt="form" width="192" height="283" />
             <form className={classes.form} onSubmit={(e) => handleSubmit(e)}>
                 <div className={classes.form__title}>Получите коммерческое предложение уже через 30 секунд</div>

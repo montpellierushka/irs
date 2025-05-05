@@ -27,7 +27,7 @@
 							<tr> 
 								<td><?=$s->id?></td> 
 								<td><?=$s->title?></td>  
-								<td><a href="{{url(route('admin_vacancies').'/'.$v->id)}}">Подробнее</a></td>
+								<td><a href="{{url(route('admin_services').'/'.$s->id)}}">Подробнее</a></td>
 								<td><a href="javascript:;" class="open-delete" data-id="<?=$s->id?>" data-toggle="modal" data-target="#modal-delete">Удалить</a></td>
 							</tr> 
 						<?}?>
@@ -37,7 +37,7 @@
 		</div> 
 	</div>
 </div> 
- 
+   
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<form method="POST" action="{{ route('admin_services_delete') }}" class="modal-content">

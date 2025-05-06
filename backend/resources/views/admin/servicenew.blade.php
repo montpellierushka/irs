@@ -634,8 +634,7 @@
 		}
  
 		$('.mytranslit').bind('change keyup input click', function(){
-			let slug = urlLit($('.mytranslit').val(), 0);
-    	$('.mytranslitto').val('services/' + slug);
+			$('.mytranslitto').val(urlLit($('.mytranslit').val(),0))
 		});
  
         $('textarea.form-control').summernote({ 

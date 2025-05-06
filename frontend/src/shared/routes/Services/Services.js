@@ -90,7 +90,7 @@ export default function Services ({ fetchInitialData, serverData }) {
 								{content.map((item, i) => {
 									console.log('item:', item);
 									return(		
-										<Link to={"/services/"+item.slug} className={classes.columns__link} key={"services"+i}>Проекты любой сложности на 1С-Битрикс,</Link> 
+										<Link to={"/services/"+item.slug} className={classes.columns__link} key={"services"+i}>{item.title}</Link> 
 									);
 								})}		
 							</div>

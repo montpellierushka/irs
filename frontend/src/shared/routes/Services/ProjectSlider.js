@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './services.module.scss';
 
-const ProjectSlider = () => {
+const ProjectSlider = ({projects}) => {
   useEffect(() => {
     if (window.Swiper) {
       new window.Swiper('.projectSwiper', {
@@ -28,27 +28,15 @@ const ProjectSlider = () => {
   return (
     <div className={`swiper projectSwiper`}>
       <div className={`swiper-wrapper`}>
+        {projects.map((project, i) => (
         <div className={`swiper-slide ${classes.servicePageProjects__slider_slide}`}>
           <div>
-            <h3>Снаб Креп НСК</h3>
-            <p>Сайт производителя крепежа</p>
+            <h3>{project.title}</h3>
+            <p>{project.text}</p>
           </div>
-          <img src="/img/services/snabkrep.jpg"/>
-          </div>
-        <div className={`swiper-slide ${classes.servicePageProjects__slider_slide}`}>
-          <div>
-            <h3>Экскалибур</h3>
-            <p>Сайт производителя крепежа1</p>
-          </div>
-          <img src="/img/services/exalibur.jpg"/>
-          </div>
-        <div className={`swiper-slide ${classes.servicePageProjects__slider_slide}`}>
-          <div>
-            <h3>Снаб Креп НСК1</h3>
-            <p>Сайт производителя крепежа2</p>
-          </div>
-          <img src="/img/services/snabkrep.jpg"/>
-          </div>
+          <img src={project.img}/>
+        </div>
+        ))}
       </div>
     </div>
   );

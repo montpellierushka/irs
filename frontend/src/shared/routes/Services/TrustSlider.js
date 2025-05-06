@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './services.module.scss';
 
-const TrustSlider = () => {
+const TrustSlider = ({trusts}) => {
   useEffect(() => {
     if (window.Swiper) {
       new window.Swiper('.trustSwiper', {
@@ -28,11 +28,9 @@ const TrustSlider = () => {
   return (
     <div className={`swiper trustSwiper`}>
       <div className={`swiper-wrapper`}>
-        <div className={`swiper-slide ${classes.servicePageTrust__slider_slide}`}><img src="/img/services/coober.png"/></div>
-        <div className={`swiper-slide ${classes.servicePageTrust__slider_slide}`}><img src="/img/services/rjd.png"/></div>
-        <div className={`swiper-slide ${classes.servicePageTrust__slider_slide}`}><img src="/img/services/er.png"/></div>
-        <div className={`swiper-slide ${classes.servicePageTrust__slider_slide}`}><img src="/img/services/tano.png"/></div>
-        <div className={`swiper-slide ${classes.servicePageTrust__slider_slide}`}><img src="/img/services/er.png"/></div>
+        {trusts.map((trust, i) => (
+          <div key={i} className={`swiper-slide ${classes.servicePageTrust__slider_slide}`}><img src={trust.img}/></div>
+        ))}
       </div>
     </div>
   );
